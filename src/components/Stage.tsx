@@ -57,9 +57,14 @@ const stageNameToIcon = new Map([
 ]);
 const stages = [...stageNameToIcon.keys()];
 
-export const getIcon = (name: string) => {
-  return <img className="h-40 w-40" src={stageNameToIcon.get(name)} />;
+export const getIcon = (name: string, className="h-40 w-40") => {
+  const icon = stageNameToIcon.get(name)
+  if(!icon) {
+    return <span className="title text-8xl">?</span>
+  }
+  return <img className={className} src={icon} />;
 };
+
 export const randStage = () => {
   return stages[Math.floor(Math.random() * stages.length)];
 };

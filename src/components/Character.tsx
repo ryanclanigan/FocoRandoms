@@ -58,8 +58,12 @@ const characterNameToIcon = new Map([
 ]);
 const characters = [...characterNameToIcon.keys()];
 
-export const getIcon = (name: string) => {
-  return <img className="h-20 w-20" src={characterNameToIcon.get(name)} />
+export const getIcon = (name: string, classes="h-20 w-20") => {
+  const icon = characterNameToIcon.get(name)
+  if(!icon) {
+    return <span className="title text-8xl">?</span>
+  }
+  return <img className={classes} src={icon} />
 }
 
 export const randCharacter = () => {
